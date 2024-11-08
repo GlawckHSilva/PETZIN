@@ -1,0 +1,153 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: ProfileScreen(),
+    );
+  }
+}
+
+class ProfileScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: RichText(
+          text: TextSpan(
+            children: [
+              TextSpan(
+                text: 'Perfil de ',
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.blue,
+                ),
+              ),
+              TextSpan(
+                text: 'Usuário',
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
+            ],
+          ),
+        ),
+        backgroundColor: Colors.black,
+        centerTitle: true,
+      ),
+      body: Stack(
+        alignment: Alignment.topCenter,
+        children: [
+          Column(
+            children: [
+              Container(
+                height: 100,
+                color: Colors.black,
+              ),
+              SizedBox(height: 80), 
+              Text(
+                'Glawck Henrique',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ),
+              SizedBox(height: 5),
+              Text(
+                '@xablau124',
+                style: TextStyle(color: Colors.grey),
+              ),
+              SizedBox(height: 5),
+              Text(
+                'Xique Xique, BA',
+                style: TextStyle(color: Colors.grey),
+              ),
+              SizedBox(height: 20),
+              Text(
+                'Habilidades:',
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              ),
+              Wrap(
+                spacing: 8,
+                runSpacing: 8,
+                children: [
+                  SkillChip(label: 'Comer pão seco'),
+                  SkillChip(label: 'Me camuflar no escuro'),
+                  SkillChip(label: 'Bater em mendigo'),
+                  SkillChip(label: 'Chorar em posição fetal por 5hr'),
+                  SkillChip(label: 'Matar mosquito com raquete elétrica'),
+                ],
+              ),
+              SizedBox(height: 20),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ElevatedButton(
+                    onPressed: () {},
+                    child: Text('Enviar Mensagem'),
+                    style: ElevatedButton.styleFrom(backgroundColor: Colors.purple),
+                  ),
+                  SizedBox(width: 10),
+                  OutlinedButton(
+                    onPressed: () {},
+                    child: Text('Seguir'),
+                  ),
+                ],
+              ),
+              Spacer(),
+            ],
+          ),
+          Positioned(
+            top: 70, 
+            child: Material(
+              elevation: 10,
+              shape: CircleBorder(),
+              child: CircleAvatar(
+                radius: 50,
+                backgroundImage: NetworkImage(
+                  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSyVre42Hn56i1Gx45AqttqFGPsLRBXG_tOQjLoGFDY8sR4BntxRITR0ZOIh0zqEsssi-I&usqp=CAU',
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.info),
+            label: 'Sobre',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.work),
+            label: 'Projetos',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.contact_mail),
+            label: 'Contato',
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class SkillChip extends StatelessWidget {
+  final String label;
+  SkillChip({required this.label});
+
+  @override
+  Widget build(BuildContext context) {
+    return Chip(
+      label: Text(label, style: TextStyle(color: Colors.white),
+      ),
+      backgroundColor: Colors.grey[700],
+
+    );
+  }
+}
