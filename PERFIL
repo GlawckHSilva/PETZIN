@@ -90,7 +90,7 @@ class ProfileScreen extends StatelessWidget {
                   ElevatedButton(
                     onPressed: () {},
                     child: Text('Enviar Mensagem'),
-                    style: ElevatedButton.styleFrom(backgroundColor: Colors.purple),
+                    style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
                   ),
                   SizedBox(width: 10),
                   OutlinedButton(
